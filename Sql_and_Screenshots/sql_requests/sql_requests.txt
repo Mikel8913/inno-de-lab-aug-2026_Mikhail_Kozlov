@@ -1,0 +1,81 @@
+1.1
+SELECT *
+FROM Customers
+WHERE country = 'USA' AND age > 25;
+
+1.2
+
+SELECT *
+FROM Orders
+WHERE  amount > 1000;
+
+
+2.1
+
+SELECT
+    cust.first_name,
+    cust.last_name,
+    ord.item,
+    ord.amount
+FROM Orders ord
+JOIN Customers cust ON ord.customer_id = cust.customer_id;
+
+2.2
+
+SELECT 
+    ship.status,
+    cust.first_name,
+    cust.last_name
+FROM Shippings ship
+JOIN Customers cust ON ship.customer = cust.customer_id;
+
+3.1
+
+SELECT 
+    country,
+    COUNT(*) AS count
+FROM Customers
+GROUP BY country;
+
+3.2
+
+SELECT 
+    item,
+    COUNT(*) AS count,
+    AVG(amount) AS avg_amount
+FROM Orders
+GROUP BY item;
+
+4.1
+
+SELECT 
+    first_name,
+    age
+FROM Customers
+ORDER BY age DESC;
+
+5.1
+
+SELECT 
+    cust.first_name,
+    cust.last_name,
+    (SELECT MAX(amount) FROM Orders) AS amount
+FROM Customers cust
+WHERE cust.customer_id = (SELECT customer_id FROM Orders WHERE amount = (SELECT MAX(amount) FROM Orders));
+
+6.1
+
+SELECT 
+    order_id,
+    customer_id,
+    item,
+    amount,
+    SUM(amount) OVER (PARTITION BY customer_id) AS total_by_customer
+FROM Orders
+ORDER BY customer_id, order_id;
+
+
+
+
+
+
