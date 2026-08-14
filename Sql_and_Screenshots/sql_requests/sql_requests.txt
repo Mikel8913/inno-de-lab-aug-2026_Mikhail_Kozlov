@@ -42,7 +42,7 @@ GROUP BY country;
 SELECT 
     item,
     COUNT(*) AS count,
-    AVG(amount) AS avg_amount
+    ROUND(AVG(amount), 2) AS avg_amount
 FROM Orders
 GROUP BY item;
 
@@ -59,9 +59,13 @@ ORDER BY age DESC;
 SELECT 
     cust.first_name,
     cust.last_name,
-    (SELECT MAX(amount) FROM Orders) AS amount
+    ord.amount
 FROM Customers cust
-WHERE cust.customer_id = (SELECT customer_id FROM Orders WHERE amount = (SELECT MAX(amount) FROM Orders));
+JOIN Orders ord ON ord.customer_id = cust.customer_id
+JOIN (
+    SELECT MAX(amount) AS max_amount
+    FROM Orders
+) m ON ord.amount = m.max_amount;
 
 6.1
 
