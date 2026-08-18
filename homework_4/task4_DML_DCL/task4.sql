@@ -32,11 +32,11 @@ WITH new_project AS (
 )
 INSERT INTO EmployeeProjects (EmployeeID, ProjectID, HoursWorked)
 SELECT 
-    tab1.EmployeeID,
-    new_project.ProjectID,
-    tab1.HoursWorked
-FROM new_project
-CROSS JOIN (VALUES (2, 40), (4, 30)) AS tab1(EmployeeID, HoursWorked);
+    EmployeeID,
+    (SELECT ProjectID FROM new_project),
+    HoursWorked
+-- tab1 временная таблица для хранения данных (EmployeeID, HoursWorked)
+FROM (VALUES (2, 40), (4, 30)) AS tab1(EmployeeID, HoursWorked);
 
 COMMIT;
 
