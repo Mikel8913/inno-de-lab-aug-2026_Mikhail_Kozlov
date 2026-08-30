@@ -5,7 +5,6 @@ db_config = {
         "user": "postgres"
     }
 }
-
 #  Извлекаем значения host и port
 connection = db_config["connection"]
 host = connection["host"]

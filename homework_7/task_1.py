@@ -21,7 +21,6 @@ city = city.replace("_", " ").upper()
 # к нижнему регистру приводим
 status = status.lower()
 # print(status)
-
 # собираем через разделитель "|"
 processed_elements = " | ".join([user_id, last_name, city, status])
 

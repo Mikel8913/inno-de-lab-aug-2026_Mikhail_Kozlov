@@ -1,6 +1,7 @@
 requested_roles = ["guest", "developer", "guest", "admin", "developer", "guest"]
 required_admin_roles = {"admin", "security_officer", "audit_manager"}
 
+
 #  удаления дубликатов
 unique_roles = set(requested_roles)
 
