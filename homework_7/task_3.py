@@ -1,10 +1,9 @@
-
 db_config = {
-"connection": {
-"host": "production-db.internal",
-"port": 5432,
-"user": "postgres"
-}
+    "connection": {
+        "host": "production-db.internal",
+        "port": 5432,
+        "user": "postgres"
+    }
 }
 
 #  Извлекаем значения host и port

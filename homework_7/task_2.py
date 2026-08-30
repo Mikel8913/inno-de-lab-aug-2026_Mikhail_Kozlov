@@ -2,10 +2,10 @@ raw_transactions = ["SUCCESS:100", "FAILED:50", "SUCCESS:-10", "SUCCESS:0", "SUC
 
 #
 transactions = [
-    int(transaction.split(":")[1]) # разбиваем строку по : и преобразум вторую часть в целое число
+    int(transaction.split(":")[1])  # разбиваем строку по : и преобразум вторую часть в целое число
     for transaction in raw_transactions  # перебираем каждую транзакцию
-    if transaction.startswith("SUCCESS:") # оставляем транзакции SUCCESS
-    and int(transaction.split(":")[1]) > 0 #  проверка, что сумма > 0
+    if transaction.startswith("SUCCESS:")  # оставляем транзакции SUCCESS
+       and int(transaction.split(":")[1]) > 0  # проверка, что сумма > 0
 ]
 
 print(f"Очищенные транзакции: {transactions}")

@@ -1,18 +1,11 @@
-
-
 raw_user_record = " 10827 ; aLeXanDer_vLaDimiRov ; mInSk ; ACTIVE "
 
-# Разбить строку на элементы и получаем список c помощью .split()
-data_user = raw_user_record.split(";")
-#print(data_user)
+# разбиваем строку, убираем пробелы у каждого элемента
+data_user = [item.strip() for item in raw_user_record.split(";")]
+# print(data_user)
 
-# Удалить пробелы в начале и конце элемента с помощью .strip()
-user_id = data_user[0].strip()
-last_name = data_user[1].strip()
-city = data_user[2].strip()
-status = data_user[3].strip()
-# withou_spaces = user_id,last_name,city,status
-# print(withou_spaces)
+# раскладываем элементы списка по отдельным переменным
+user_id, last_name, city, status = data_user
 
 # Префикс "UID-" добавил
 user_id = f"UID-{user_id}"
